@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  body {
+    @apply tracking-wide m-0 p-0 text-gray-500;
+  }
+  button {
+    @apply px-10 py-2 bg-primary-color rounded outline-none uppercase  text-center text-base text-white cursor-pointer;
+  }
+  h1 {
+    @apply text-3xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+}
+.root,
+#root,
+#docs-root {
+  --primary-color: #30b1a7;
+  --secondary-color: #000;
+}
