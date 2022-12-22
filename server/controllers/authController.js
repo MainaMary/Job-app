@@ -1,4 +1,5 @@
 const UserModel = require("../models/User");
+const jwt = require("jsonwebtoken");
 
 const login = (req, res) => {
   const { email, password } = req.body;
@@ -8,8 +9,14 @@ const login = (req, res) => {
 const register = async (req, res) => {
   try {
     const user = await UserModel.create(req.body);
+    const token = user.createJWT();
     console.log(user, "user");
-    res.status(201).json({ user });
+    res
+      .status(201)
+      .json({
+        user: { name: user.name, email: user.email, location: user.location },
+        token,
+      });
     //res.send(user);
   } catch (error) {
     console.log(error.message);
