@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
-    <div className=" block md:flex  justify-between min-h-[calc(100% - 80px)] items-center mt-16">
+    <div className=" block md:flex  justify-between min-h-[calc(100% - 80px)] items-center mt-24">
       <div className="w-full md:w-1/2">
         <h1>
           Job <span className="text-primary-color">Tracking</span> App
