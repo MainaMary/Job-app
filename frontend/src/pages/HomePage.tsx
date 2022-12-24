@@ -11,7 +11,7 @@ const HomePage = () => {
         </h1>
         <div className=" w-full md:w-[70%] py-8">
           <p className="mb-8 text-lg">
-            Find your next job on {""}
+            Find your next job on
             <span className="text-primary-color">JobBag.</span> Explore all the
             current vaccancies from all top employers.
             <br />
