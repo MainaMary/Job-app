@@ -29,7 +29,7 @@ const reducer = (state: any, action: AlertAction) => {
         alertText: "",
       };
     default:
-      throw new Error();
+      throw new Error("No action");
   }
 };
 
