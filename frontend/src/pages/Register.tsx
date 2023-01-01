@@ -5,6 +5,7 @@ import CustomInput from "../components/CustomInput";
 import CustomLabel from "../components/CustomLabel";
 import { useAppContext } from "../context/appContext";
 import { Link } from "react-router-dom";
+import { useRegisterUser } from "../hooks/usePost";
 
 interface RProps {
   name: string;
@@ -17,7 +18,8 @@ const Register = () => {
     email: "",
     password: "",
   };
-  const { displayAlert, clearAlert, alertText } = useAppContext();
+  const { mutate } = useRegisterUser();
+  const { displayAlert, clearAlert, alertText, registerUser } = useAppContext();
   const [formValues, setFormValues] = useState<RProps>(defaultValues);
   const { name, email, password } = formValues;
   const handleChange = (e: any) => {
@@ -33,6 +35,8 @@ const Register = () => {
     if (name && email && password) {
       clearAlert();
     }
+    console.log({ name, email, password });
+    registerUser(mutate({ name: name, email, password }));
   };
   return (
     <FormWrapper>
