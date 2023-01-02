@@ -36,7 +36,8 @@ const Register = () => {
       clearAlert();
     }
     console.log({ name, email, password });
-    registerUser(mutate({ name: name, email, password }));
+    const payload = mutate({ name, email, password });
+    registerUser(password);
   };
   return (
     <FormWrapper>
