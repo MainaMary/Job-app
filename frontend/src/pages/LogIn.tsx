@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Button from "../components/Button";
 import FormWrapper from "../components/FormWrapper";
 import CustomInput from "../components/CustomInput";
@@ -10,11 +10,17 @@ interface RProps {
   password: string;
 }
 const LogIn = () => {
+  const emailRef = useRef<HTMLInputElement>(null);
   const { displayAlert, clearAlert, alertText } = useAppContext();
   const defaultValues: RProps = {
     email: "",
     password: "",
   };
+  useEffect(() => {
+    if (emailRef.current) {
+      emailRef.current.focus();
+    }
+  }, []);
   const [formValues, setFormValues] = useState<RProps>(defaultValues);
   const handleChange = (e: any) => {
     const { value, name } = e.target;
@@ -44,6 +50,7 @@ const LogIn = () => {
             type="text"
             name="email"
             onChange={handleChange}
+            ref={emailRef}
           />
         </div>
         <div className="my-4">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Button from "../components/Button";
 import FormWrapper from "../components/FormWrapper";
 import CustomInput from "../components/CustomInput";
@@ -37,8 +37,16 @@ const Register = () => {
     }
     console.log({ name, email, password });
     const payload = mutate({ name, email, password });
-    registerUser(password);
+    console.log(payload, "payload");
+    registerUser();
   };
+  
+  const userNameRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (userNameRef.current) {
+      userNameRef.current.focus();
+    }
+  }, []);
   return (
     <FormWrapper>
       <form className="w-full py-4 px-5" onSubmit={handleSubmit}>
@@ -47,6 +55,7 @@ const Register = () => {
         <div className="my-4">
           <CustomLabel>Name</CustomLabel>
           <CustomInput
+            ref={userNameRef}
             value={name}
             type="text"
             name="name"
