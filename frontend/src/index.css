@@ -6,7 +6,7 @@
     @apply tracking-wide m-0 p-0 text-gray-500;
   }
   button {
-    @apply px-10 py-2 bg-primary-color rounded outline-none uppercase  text-center text-base text-white cursor-pointer;
+    @apply px-10 py-2 bg-primary-color rounded outline-none uppercase  text-center text-base text-white cursor-pointer disabled:opacity-75;
   }
   h1 {
     @apply text-3xl;
@@ -18,6 +18,6 @@
 .root,
 #root,
 #docs-root {
-  --primary-color: #30b1a7;
+  --primary-color: #134980;
   --secondary-color: #000;
 }

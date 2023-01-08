@@ -40,7 +40,6 @@ const Register = () => {
     console.log(payload, "payload");
     registerUser();
   };
-  
   const userNameRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     if (userNameRef.current) {
@@ -81,7 +80,11 @@ const Register = () => {
           />
         </div>
         <div className="my-4">
-          <Button name="Register" className="w-full" />
+          <Button
+            name="Register"
+            className="w-full"
+            disabled={!name || !email || !password ? true : false}
+          />
         </div>
         <div className="my-4">
           <p>

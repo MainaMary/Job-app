@@ -1,4 +1,4 @@
-import { DISPLAY_ALERT, CLEAR_CART } from "./actons";
+import { DISPLAY_ALERT, CLEAR_CART, REGISTER_USER_SUCCESS } from "./actons";
 
 import { initialValues } from "./appContext";
 enum ActionTypes {
@@ -6,9 +6,14 @@ enum ActionTypes {
   DECREASE = "DECREASE",
   CLEAR_CART = "CLEAR_CART",
 }
+interface User {
+  user: {};
+  token: string;
+  location: string;
+}
 interface AlertAction {
   type: any;
-  payload?: string;
+  payload?: User;
 }
 const reducer = (state: any, action: AlertAction) => {
   const { type, payload } = action;
@@ -28,6 +33,17 @@ const reducer = (state: any, action: AlertAction) => {
         alertType: "",
         alertText: "",
       };
+    case REGISTER_USER_SUCCESS: {
+      return {
+        ...state,
+        alertText: "Registration successful",
+        alertType: "ssuccess",
+        showAlert: true,
+        user: payload?.user,
+        token: payload?.token,
+        location: payload?.location,
+      };
+    }
     default:
       throw new Error("No action");
   }
