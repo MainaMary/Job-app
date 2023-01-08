@@ -1,9 +1,17 @@
 import { useMutation } from "@tanstack/react-query";
+import { baseUrl } from "../api/baseUrl";
 import axios from "axios";
 const registerUser = (payload: any) => {
-  return axios.post("http://localhost:8000/api/v1/auth/register", payload);
+  console.log(baseUrl);
+  const response = axios.post(`${baseUrl}auth/register`, payload);
+  return response;
 };
 
 export const useRegisterUser = () => {
-  return useMutation(registerUser);
+  return useMutation({
+    mutationFn: registerUser,
+    onSuccess: (data) => {
+      console.log(data, "reponse data");
+    },
+  });
 };
