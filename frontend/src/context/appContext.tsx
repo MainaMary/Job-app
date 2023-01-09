@@ -3,6 +3,7 @@ import { useContext, useReducer } from "react";
 import { createContext } from "react";
 import { DISPLAY_ALERT, CLEAR_CART, REGISTER_USER_SUCCESS } from "./actons";
 import { reducer } from "./reducers";
+import { useRegisterUser } from "../hooks/usePost";
 
 interface Props {
   children: JSX.Element;
@@ -24,6 +25,7 @@ export const useAppContext = () => {
 };
 const AppContextProvider = ({ children }: Props) => {
   const [values, dispatch] = useReducer(reducer, initialValues);
+  const { mutate } = useRegisterUser();
 
   const displayAlert = () => {
     dispatch({ type: DISPLAY_ALERT });
@@ -37,7 +39,7 @@ const AppContextProvider = ({ children }: Props) => {
       payload: payload,
     });
   };
-  console.log(values);
+
   return (
     <appContext.Provider
       value={{ ...values, displayAlert, clearAlert, registerUser }}
