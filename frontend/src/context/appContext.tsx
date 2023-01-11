@@ -21,7 +21,7 @@ interface initialValues {
   resData: [];
   setResData: React.Dispatch<React.SetStateAction<never[]>>;
 }
-const appContext = createContext<initialValues>();
+const appContext = createContext<initialValues | null>(null);
 
 export const useAppContext = () => {
   return useContext(appContext);
