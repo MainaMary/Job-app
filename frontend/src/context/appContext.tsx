@@ -9,19 +9,28 @@ import { useQueryClient } from "@tanstack/react-query";
 interface Props {
   children: JSX.Element;
 }
-interface initialValues {
-  isLoading: true;
-  isError: false;
-  showAlert: false;
-  alertText: "";
-  alertType: "";
+interface JobsContext {
+  isError: boolean;
+  showAlert: boolean;
+  alertText: string;
+  alertType: string;
   displayAlert: () => void;
   clearAlert: () => void;
   registerUser: (x: any) => void;
   resData: [];
   setResData: React.Dispatch<React.SetStateAction<never[]>>;
 }
-const appContext = createContext<initialValues | null>(null);
+const initialValues = {
+  isLoading: true,
+  isError: false,
+  showAlert: false,
+  alertText: "",
+  alertType: "",
+  displayAlert: null,
+  clearAlert: null,
+  registerUser: null,
+};
+const appContext = createContext<JobsContext | null>(null);
 
 export const useAppContext = () => {
   return useContext(appContext);
@@ -30,7 +39,7 @@ const AppContextProvider = ({ children }: Props) => {
   const [values, dispatch] = useReducer(reducer, initialValues);
   const [resData, setResData] = useState([]);
   const queryClient = useQueryClient();
-  const { mutate } = useRegisterUser();
+  console.log(resData, "resdata");
   queryClient.setQueryData;
 
   const displayAlert = () => {
