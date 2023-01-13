@@ -19,7 +19,8 @@ const Register = () => {
     password: "",
   };
   const { mutate } = useRegisterUser();
-  const { displayAlert, clearAlert, alertText, registerUser } = useAppContext();
+  const { displayAlert, clearAlert, alertText, registerUser, user } =
+    useAppContext();
   const [formValues, setFormValues] = useState<RProps>(defaultValues);
   const { name, email, password } = formValues;
   const handleChange = (e: any) => {
@@ -36,9 +37,10 @@ const Register = () => {
       clearAlert();
     }
     console.log({ name, email, password });
-    const payload = mutate({ name, email, password });
-    console.log(payload, "payload");
-    registerUser();
+    mutate({ name, email, password });
+    if (user.length) {
+      registerUser(user);
+    }
   };
   const userNameRef = useRef<HTMLInputElement>(null);
   useEffect(() => {

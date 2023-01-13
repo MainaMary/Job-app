@@ -3,23 +3,13 @@ import { useContext, useReducer } from "react";
 import { createContext } from "react";
 import { DISPLAY_ALERT, CLEAR_CART, REGISTER_USER_SUCCESS } from "./actons";
 import { reducer } from "./reducers";
-import { useRegisterUser } from "../hooks/usePost";
+import { JobsContext, RegisterUser } from "../types";
 import { useQueryClient } from "@tanstack/react-query";
 
 interface Props {
   children: JSX.Element;
 }
-interface JobsContext {
-  isError: boolean;
-  showAlert: boolean;
-  alertText: string;
-  alertType: string;
-  displayAlert: () => void;
-  clearAlert: () => void;
-  registerUser: (x: any) => void;
-  resData: [];
-  setResData: React.Dispatch<React.SetStateAction<never[]>>;
-}
+
 const initialValues = {
   isLoading: true,
   isError: false,
@@ -29,17 +19,30 @@ const initialValues = {
   displayAlert: null,
   clearAlert: null,
   registerUser: null,
+  user: [],
+  setUser: null,
 };
-const appContext = createContext<JobsContext | null>(null);
+const appContext = createContext<JobsContext>({
+  isLoading: true,
+  isError: false,
+  showAlert: false,
+  alertText: "",
+  alertType: "",
+  displayAlert: () => {},
+  clearAlert: () => {},
+  registerUser: () => {},
+  user: [],
+  setUser: () => {},
+});
 
 export const useAppContext = () => {
   return useContext(appContext);
 };
 const AppContextProvider = ({ children }: Props) => {
   const [values, dispatch] = useReducer(reducer, initialValues);
-  const [resData, setResData] = useState([]);
+  const [user, setUser] = useState<RegisterUser[]>([]);
   const queryClient = useQueryClient();
-  console.log(resData, "resdata");
+  console.log(user, "resdata");
   queryClient.setQueryData;
 
   const displayAlert = () => {
@@ -48,7 +51,8 @@ const AppContextProvider = ({ children }: Props) => {
   const clearAlert = () => {
     dispatch({ type: CLEAR_CART });
   };
-  const registerUser = (payload: any) => {
+  const registerUser = (payload: RegisterUser) => {
+    console.log("payload", "successful regsitration");
     dispatch({
       type: REGISTER_USER_SUCCESS,
       payload: payload,
@@ -62,8 +66,8 @@ const AppContextProvider = ({ children }: Props) => {
         displayAlert,
         clearAlert,
         registerUser,
-        resData,
-        setResData,
+        user,
+        setUser,
       }}
     >
       {children}

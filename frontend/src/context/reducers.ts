@@ -1,6 +1,5 @@
 import { DISPLAY_ALERT, CLEAR_CART, REGISTER_USER_SUCCESS } from "./actons";
-
-import { initialValues } from "./appContext";
+import { RegisterUser } from "../types";
 enum ActionTypes {
   DISPLAY_ALERT = "DISPLAY_ALERT",
   DECREASE = "DECREASE",
@@ -13,7 +12,7 @@ interface User {
 }
 interface AlertAction {
   type: any;
-  payload?: User;
+  payload?: RegisterUser;
 }
 const reducer = (state: any, action: AlertAction) => {
   const { type, payload } = action;
@@ -41,7 +40,7 @@ const reducer = (state: any, action: AlertAction) => {
         showAlert: true,
         user: payload?.user,
         token: payload?.token,
-        location: payload?.location,
+        // location: payload?.location,
       };
     }
     default:

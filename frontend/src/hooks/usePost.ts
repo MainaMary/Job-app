@@ -2,27 +2,24 @@ import { useMutation } from "@tanstack/react-query";
 import { baseUrl } from "../api/baseUrl";
 import axios from "axios";
 import { useAppContext } from "../context/appContext";
+import { JobsContext } from "../types";
 interface Props {
   email: string;
   password: string;
   name: string;
 }
 const registerUser = async (payload: Props) => {
-  try {
-    console.log(baseUrl);
-    const response = await axios.post(`${baseUrl}auth/register`, payload);
-    return response;
-  } catch (error: any) {
-    return error.message;
-  }
+  const response = await axios.post(`${baseUrl}auth/register`, payload);
+  return response.data;
 };
 
 export const useRegisterUser = () => {
-  const { setResData } = useAppContext();
+  const { setUser } = useAppContext();
+
   return useMutation({
     mutationFn: registerUser,
     onSuccess: (data) => {
-      setResData(data);
+      setUser(data);
       console.log(data, "reponse data");
     },
   });
