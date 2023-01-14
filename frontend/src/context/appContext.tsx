@@ -59,6 +59,9 @@ const AppContextProvider = ({ children }: Props) => {
     });
   };
 
+  const addToLocalStorage = (user: RegisterUser) => {};
+  addToLocalStorage("addusers", JSON.stringify(user));
+  const removeFromLocalStorage = () => {};
   return (
     <appContext.Provider
       value={{

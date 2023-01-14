@@ -18,7 +18,7 @@ const Register = () => {
     email: "",
     password: "",
   };
-  const { mutate } = useRegisterUser();
+  const { mutate, isError, isLoading, error } = useRegisterUser();
   const { displayAlert, clearAlert, alertText, registerUser, user } =
     useAppContext();
   const [formValues, setFormValues] = useState<RProps>(defaultValues);
@@ -48,6 +48,12 @@ const Register = () => {
       userNameRef.current.focus();
     }
   }, []);
+  if (isLoading) {
+    <p>Loading</p>;
+  }
+  if (isError) {
+    <p>{error?.message}</p>;
+  }
   return (
     <FormWrapper>
       <form className="w-full py-4 px-5" onSubmit={handleSubmit}>
