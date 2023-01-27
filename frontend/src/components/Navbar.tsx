@@ -21,10 +21,15 @@ const Navbar = () => {
         </div>
         <h1>JobBag</h1>
       </div>
-      <div className="w-[25%] flex justify-between">
+      <div className="w-[25%] md:flex justify-between hidden">
         <Button name={<Link to="/login">Log in</Link>} />
         <Button name={<Link to="/register">Register</Link>} />
       </div>
+      <div className="w-[25%]  justify-between  block md:hidden">
+        <Button name={<Link to="/login">Log in</Link>} />
+        <Button name={<Link to="/register">Register</Link>} />
+      </div>
+      
       <div onClick={handleBars} className="block md:hidden">
          {open ? <VscChromeClose/> : <FaBars/>}
       </div>
