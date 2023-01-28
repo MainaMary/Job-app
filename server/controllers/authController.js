@@ -3,6 +3,13 @@ const jwt = require("jsonwebtoken");
 
 const login = (req, res) => {
   const { email, password } = req.body;
+  if(!email || !password){
+    throw new Error('Please provide email and password')
+  }
+  const singleUser = UserModel.findOne({email})
+  if(!singleUser){
+    throw new Error('Invalid email address')
+  }
   console.log(email, password);
   res.status(200).send("user logged in");
 };
