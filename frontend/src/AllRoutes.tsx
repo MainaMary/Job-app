@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import React from "react";
 import NotFound from "./pages/NotFound";
-import Register from "./pages/Register";
-import LogIn from "./pages/LogIn";
-import UserProfile from "./dashboard/UserProfile";
 import AddJob from "./dashboard/AddJob";
 import Alljobs from "./dashboard/Alljobs";
+const HomePage = React.lazy(() => import("./pages/HomePage"))
+const Register =React.lazy(()=> import("./pages/Register"))
+const UserProfile = React.lazy(() =>import( "./dashboard/UserProfile"))
+const LogIn = React.lazy(() =>import("./pages/LogIn"))
 const array = [
   { path: "/", component: <HomePage /> },
   { path: "/register", component: <Register /> },
