@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import AllRoutes from "./AllRoutes";
+import AllRoutes from "./routes/AllRoutes";
 import { Suspense } from "react";
 import CustomSpinner from "./components/CustomSpinner";
 
