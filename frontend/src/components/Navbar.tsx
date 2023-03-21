@@ -16,7 +16,7 @@ const Navbar = () => {
         onClick={() => navigate("/")}
         className="flex w-[13%] justify-between"
       >
-        <div className="font-bold bg-primary-color rounded w-[40px] text-base leading-[40px] h-[40px] text-center text-white">
+        <div className="font-bold bg-primary-color cursor-pointer rounded w-[40px] text-base leading-[40px] h-[40px] text-center text-white">
           JB
         </div>
         <h1>JobBag</h1>
