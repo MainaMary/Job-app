@@ -5,6 +5,7 @@ const userProfile = () => {
     <div>userProfile
       <p>User name</p>
       <p>Update user profile</p>
+      <p>User log out</p>
     </div>
   )
 }
