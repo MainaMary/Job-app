@@ -1,4 +1,6 @@
 import React,{useState} from "react";
+import {FiAlignLeft} from "react-icons/fi"
+import {FaUserAlt} from "react-icons/fa"
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
