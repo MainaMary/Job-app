@@ -4,6 +4,7 @@ import FormWrapper from "../components/FormWrapper";
 import CustomInput from "../components/CustomInput";
 import CustomLabel from "../components/CustomLabel";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/appContext";
 interface RProps {
   email: string;
@@ -12,6 +13,7 @@ interface RProps {
 const LogIn = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const { displayAlert, clearAlert, alertText } = useAppContext();
+  const navigate = useNavigate()
   const defaultValues: RProps = {
     email: "",
     password: "",
@@ -62,7 +64,7 @@ const LogIn = () => {
             value={formValues.password}
           />
         </div>
-        <div className="my-4">
+        <div className="my-4" onClick={() =>navigate('/home')}>
           <Button name="Log in" className="w-full" />
         </div>
         <div className="my-4">
