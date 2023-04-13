@@ -1,17 +1,17 @@
-import React,{useState} from "react";
-import {FiAlignLeft} from "react-icons/fi"
-import {FaUserAlt} from "react-icons/fa"
+import React, { useState } from "react";
+import { FiAlignLeft } from "react-icons/fi";
+import { FaUserAlt } from "react-icons/fa";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import {FaBars} from "react-icons/fa"
-import {VscChromeClose} from "react-icons/vsc"
+import { FaBars } from "react-icons/fa";
+import { VscChromeClose } from "react-icons/vsc";
 const Navbar = () => {
-  const [open, setOpen] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(false);
   const navigate = useNavigate();
-  const handleBars = () =>{
-    setOpen(prev => !prev)
-  }
+  const handleBars = () => {
+    setOpen((prev) => !prev);
+  };
   return (
     <nav className="flex justify-between px-16 h-20 items-center ">
       <div
@@ -31,9 +31,9 @@ const Navbar = () => {
         <Button name={<Link to="/login">Log in</Link>} />
         <Button name={<Link to="/register">Register</Link>} />
       </div>
-      
+
       <div onClick={handleBars} className="block md:hidden">
-         {open ? <VscChromeClose/> : <FaBars/>}
+        {open ? <VscChromeClose /> : <FaBars />}
       </div>
     </nav>
   );
