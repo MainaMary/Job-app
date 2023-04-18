@@ -19,3 +19,12 @@ export type RegisterUser = {
     name: string;
   };
 };
+export interface FetchResults {
+  isLoading: boolean
+  isRefreshing: boolean
+  isSuccess: boolean
+  isError: boolean
+  error: false | any
+  data: any
+  refetch?: any
+}

@@ -1,5 +1,6 @@
 import { type AxiosError } from 'axios'
 import { useQuery } from '@tanstack/react-query'
+import { FetchResults } from '../types'
 
 
 export default function useFetch(
