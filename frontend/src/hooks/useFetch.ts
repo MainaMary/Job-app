@@ -1,6 +1,7 @@
 import { type AxiosError } from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import { FetchResults } from '../types'
+import axiosInstance from '../api/baseUrl'
 
 
 export default function useFetch(
@@ -31,7 +32,7 @@ export default function useFetch(
       ...(args?.onError && {
         onError: (err: AxiosError) =>
           args?.onError({
-            message: makeErrorMessage(err),
+            message:err,
             statusCode: err.response?.status,
           }),
       }),
@@ -45,7 +46,7 @@ export default function useFetch(
     data,
     refetch,
     error: {
-      message: error ? makeErrorMessage(error as AxiosError) : '',
+      message: error ? error : '',
       statusCode: (error as AxiosError)?.response?.status || 0,
     },
   }
