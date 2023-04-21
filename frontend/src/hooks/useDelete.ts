@@ -3,13 +3,14 @@ import { baseUrl } from "../api/baseUrl";
 import axios from "axios";
 import { useAppContext } from "../context/appContext";
 import { JobsContext } from "../types";
+import axiosInstance from "../api/baseUrl";
 interface Props {
   email: string;
   password: string;
   name: string;
 }
 const registerUser = async (payload: Props) => {
-  const response = await axios.delete(`${baseUrl}auth/register`, payload);
+  const response = await axiosInstance.delete(`${baseUrl}auth/register`, payload);
   return response.data;
 };
 
