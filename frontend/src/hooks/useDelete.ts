@@ -10,7 +10,7 @@ interface Props {
   name: string;
 }
 const registerUser = async (payload: Props) => {
-  const response = await axiosInstance.delete(`${baseUrl}auth/register`, payload);
+  const response = await axiosInstance.delete(`${baseUrl}auth/register`);
   return response.data;
 };
 
