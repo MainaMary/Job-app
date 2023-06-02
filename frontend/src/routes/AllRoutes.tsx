@@ -4,6 +4,7 @@ import NotFound from "../pages/NotFound";
 import AddJob from "../dashboard/AddJob";
 import Alljobs from "../dashboard/Alljobs";
 import ProtectedRoute from "./ProtectedRoute";
+import Chat from "../pages/chat/Chat";
 const HomePage = React.lazy(() => import("../pages/HomePage"))
 const Register =React.lazy(()=> import("../pages/Register"))
 const UserProfile = React.lazy(() =>import( "../dashboard/UserProfile"))
@@ -17,6 +18,7 @@ const array = [
   {path:"/addJob", component:<AddJob/>},
   {path:"/allJobs", component:<Alljobs/>},
   {path:"/home", component:<Home/>},
+  {path:"/chat", component:<Chat/>},
   { path: "*", component: <NotFound /> },
 ];
 const AllRoutes = () => {
