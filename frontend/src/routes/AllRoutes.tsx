@@ -10,6 +10,7 @@ const Register =React.lazy(()=> import("../pages/Register"))
 const UserProfile = React.lazy(() =>import( "../dashboard/UserProfile"))
 const LogIn = React.lazy(() =>import("../pages/LogIn"))
 const Home = React.lazy(() =>import("../pages/Dashboard"))
+const ProtectedRoute = React.lazy(() => import("../routes/ProtectedRoute"))
 const array = [
   { path: "/", component: <HomePage /> },
   { path: "/register", component: <Register /> },
