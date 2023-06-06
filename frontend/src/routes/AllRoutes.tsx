@@ -3,7 +3,6 @@ import React from "react";
 import NotFound from "../pages/NotFound";
 import AddJob from "../dashboard/AddJob";
 import Alljobs from "../dashboard/Alljobs";
-import ProtectedRoute from "./ProtectedRoute";
 import Chat from "../pages/chat/Chat";
 const HomePage = React.lazy(() => import("../pages/HomePage"))
 const Register =React.lazy(()=> import("../pages/Register"))
