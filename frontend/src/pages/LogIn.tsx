@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import {AiFillEyeInvisible, AiFillEye} from "react-icons/ai"
 import Button from "../components/Button";
 import FormWrapper from "../components/FormWrapper";
 import CustomInput from "../components/CustomInput";
@@ -65,6 +66,21 @@ const LogIn = () => {
             onChange={handleChange}
             value={formValues.password}
           />
+          <div className="relative">
+          <CustomInput
+            type={visible ? "text" : "password"}
+            placeholder="Password"
+            name="password"
+            onChange={handleChange}
+            value={formValues.password}
+          />
+          <div
+            onClick={handleVisible}
+            className="absolute right-2 top-3 cursor-pointer"
+          >
+            {visible ? <AiFillEyeInvisible /> : <AiFillEye />}
+          </div>
+        </div>
         </div>
         <div className="my-4" onClick={() =>navigate('/home')}>
           <Button name="Log in" className="w-full" />
