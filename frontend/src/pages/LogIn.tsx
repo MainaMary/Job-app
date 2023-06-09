@@ -6,6 +6,7 @@ import CustomLabel from "../components/CustomLabel";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/appContext";
+import useVisibleHook from "../custom/useVisible";
 interface RProps {
   email: string;
   password: string;
@@ -14,6 +15,7 @@ const LogIn = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const { displayAlert, clearAlert, alertText } = useAppContext();
   const navigate = useNavigate()
+  const {visible, handleVisible} = useVisibleHook()
   const defaultValues: RProps = {
     email: "",
     password: "",
