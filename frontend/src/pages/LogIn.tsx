@@ -29,12 +29,19 @@ const LogIn = () => {
       emailRef.current.focus();
     }
   }, []);
+  const passwordRef = useRef(null)
+
+  const ConfirmPasswordRef = useRef(null)
+
   const [formValues, setFormValues] = useState<RProps>(defaultValues);
   const handleChange = (e: any) => {
     const { value, name } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
   const { email, password, confirmPassword } = formValues;
+  const handleClick = () =>{
+    passwordRef.current
+  }
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (!email || !password) {
@@ -75,6 +82,7 @@ const LogIn = () => {
             value={formValues.password}
           />
           <div
+          ref={passwordRef}
             onClick={handleVisible}
             className="absolute right-2 top-3 cursor-pointer"
           >
@@ -93,6 +101,7 @@ const LogIn = () => {
             value={formValues.confirmPassword}
           />
           <div
+          ref={ConfirmPasswordRef}
             onClick={handleVisible}
             className="absolute right-2 top-3 cursor-pointer"
           >
