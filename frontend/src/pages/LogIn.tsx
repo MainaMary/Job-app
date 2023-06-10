@@ -11,15 +11,18 @@ import useVisibleHook from "../custom/useVisible";
 interface RProps {
   email: string;
   password: string;
+  confirmPassword: string;
 }
 const LogIn = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const { displayAlert, clearAlert, alertText } = useAppContext();
+  const [error, setError] = useState<string>("")
   const navigate = useNavigate()
   const {visible, handleVisible} = useVisibleHook()
   const defaultValues: RProps = {
     email: "",
     password: "",
+    confirmPassword:""
   };
   useEffect(() => {
     if (emailRef.current) {
@@ -31,7 +34,7 @@ const LogIn = () => {
     const { value, name } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
-  const { email, password } = formValues;
+  const { email, password, confirmPassword } = formValues;
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (!email || !password) {
@@ -40,6 +43,9 @@ const LogIn = () => {
     }
     if (email && password) {
       clearAlert();
+    }
+    if(password !==  confirmPassword){
+      setError('Passwords should match')
     }
   };
   return (
@@ -60,12 +66,6 @@ const LogIn = () => {
         </div>
         <div className="my-4">
           <CustomLabel>Password</CustomLabel>
-          <CustomInput
-            type="password"
-            name="password"
-            onChange={handleChange}
-            value={formValues.password}
-          />
           <div className="relative">
           <CustomInput
             type={visible ? "text" : "password"}
@@ -73,6 +73,24 @@ const LogIn = () => {
             name="password"
             onChange={handleChange}
             value={formValues.password}
+          />
+          <div
+            onClick={handleVisible}
+            className="absolute right-2 top-3 cursor-pointer"
+          >
+            {visible ? <AiFillEyeInvisible /> : <AiFillEye />}
+          </div>
+        </div>
+        </div>
+        <div className="my-4">
+          <CustomLabel> Confirm Password</CustomLabel>
+          <div className="relative">
+          <CustomInput
+            type={visible ? "text" : "password"}
+            placeholder="Password"
+            name="confirmPassword"
+            onChange={handleChange}
+            value={formValues.confirmPassword}
           />
           <div
             onClick={handleVisible}
