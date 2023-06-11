@@ -39,8 +39,10 @@ const LogIn = () => {
     setFormValues({ ...formValues, [name]: value });
   };
   const { email, password, confirmPassword } = formValues;
-  const handleClick = () =>{
-    passwordRef.current
+  const handleClick = (event:any) =>{
+    event.currentTarget.id
+    console.log(event.currentTarget.id)
+    handleVisible()
   }
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -83,7 +85,7 @@ const LogIn = () => {
           />
           <div
           ref={passwordRef}
-            onClick={handleVisible}
+            onClick={handleClick}
             className="absolute right-2 top-3 cursor-pointer"
           >
             {visible ? <AiFillEyeInvisible /> : <AiFillEye />}
