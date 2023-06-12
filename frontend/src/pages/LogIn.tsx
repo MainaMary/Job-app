@@ -59,7 +59,7 @@ const LogIn = () => {
   };
   return (
     <FormWrapper>
-      <form className="w-full py-4 px-5" onSubmit={handleSubmit}>
+      <form className="lg:w-full w-[]70%p y-4 px-5" onSubmit={handleSubmit}>
         <p className="text-red-400 text-center">{alertText}</p>
         <h2>Log in</h2>
 
