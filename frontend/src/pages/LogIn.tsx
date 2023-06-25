@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/appContext";
 import useVisibleHook from "../custom/useVisible";
+import { toast } from "react-toastify";
 interface RProps {
   email: string;
   password: string;
@@ -29,6 +30,9 @@ const LogIn = () => {
       emailRef.current.focus();
     }
   }, []);
+  useEffect(() =>{
+    toast.success('Logged in successfully')
+  },[])
   const passwordRef = useRef(null)
 
   const ConfirmPasswordRef = useRef(null)
