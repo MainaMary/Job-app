@@ -28,7 +28,7 @@ const appContext = createContext<JobsContext>({
   showAlert: false,
   alertText: "",
   alertType: "",
-  displayAlert: () => {},
+
   clearAlert: () => {},
   registerUser: () => {},
   user: [],
