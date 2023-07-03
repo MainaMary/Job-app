@@ -40,7 +40,7 @@ export const useAppContext = () => {
 };
 const AppContextProvider = ({ children }: Props) => {
   const [values, dispatch] = useReducer(reducer, initialValues);
-  axios.defaults.headers.common['Authorization']=`Bearer ${state.token}`
+  axios.defaults.headers.common['Authorization']=`Bearer ${values.user.token}`
   const [user, setUser] = useState<RegisterUser[]>([]);
   const queryClient = useQueryClient();
   console.log(user, "resdata");
