@@ -42,4 +42,4 @@ const ThemeProvider = ({ children }: CProps) => {
     </ThemeContext.Provider>
   );
 };
-export default ThemeProvider;
+
