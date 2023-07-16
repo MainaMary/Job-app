@@ -20,7 +20,7 @@ export const useRegisterUser = () => {
     mutationFn: registerUser,
     onSuccess: (data) => {
       setUser(data);
-      console.log(data, "reponse data");
+      
     },
   });
 };
